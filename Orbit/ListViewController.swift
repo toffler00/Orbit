@@ -13,7 +13,6 @@ import CoreLocation
 import ExpandableButton
 import NXDrawKit
 
-
 class ListViewController: UIViewController {
     
     
