@@ -24,5 +24,4 @@ platform :ios do
     enable_automatic_code_signing(path: "Orbit.xcworkspace")
     upload_to_app_store
   end
-
 end
