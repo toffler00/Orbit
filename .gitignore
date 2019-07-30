@@ -23,3 +23,6 @@ fastlane/screenshots/screenshots.html
 fastlane/test_output
 
 # End of https://www.gitignore.io/api/fastlane
+
+###Orbit###
+certs/
