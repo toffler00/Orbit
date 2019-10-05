@@ -9,7 +9,7 @@
 import UIKit
 import JTAppleCalendar
 
-class CalendarCell: JTAppleCell {
+class CalendarCell: JTACDayCell {
     var todayView : UIView = UIView()
     var isSelectedImg : UIImageView = UIImageView()
     var isContentsImg : UIImageView = UIImageView()

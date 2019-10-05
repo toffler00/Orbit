@@ -74,7 +74,7 @@ extension ListViewController {
         layout.itemSize = CGSize(width: width, height: width)
         layout.scrollDirection = .horizontal
         
-        calendarView = JTAppleCalendarView(frame: CGRect.zero)
+        calendarView = JTACMonthView(frame: CGRect.zero)
         calendarView.register(CalendarCell.self, forCellWithReuseIdentifier: "cell")
         calendarView.ibCalendarDelegate = self
         calendarView.ibCalendarDataSource = self
@@ -101,7 +101,7 @@ extension ListViewController {
     
 }
 
-extension ListViewController : JTAppleCalendarViewDelegate,  JTAppleCalendarViewDataSource {
+extension ListViewController : JTACMonthViewDelegate,  JTACMonthViewDataSource {
     func setCalendar() {
         calendarView.visibleDates { (segeInfo) in
             self.updateDateLabel(visibleDate: segeInfo)
@@ -121,7 +121,7 @@ extension ListViewController : JTAppleCalendarViewDelegate,  JTAppleCalendarView
         listTableView.reloadData()
     }
     
-    func handleCellColor(cell : JTAppleCell?, cellState : CellState) {
+    func handleCellColor(cell : JTACDayCell?, cellState : CellState) {
         guard let validCell = cell as? CalendarCell else {return}
         dateFormatter.dateFormat = "yyyy MM dd"
         dateFormatter.locale = Locale(identifier: "kr_KR")
@@ -146,7 +146,7 @@ extension ListViewController : JTAppleCalendarViewDelegate,  JTAppleCalendarView
         }
     }
     
-    func handleSelectedCellColor(cell : JTAppleCell?, cellState : CellState) {
+    func handleSelectedCellColor(cell : JTACDayCell?, cellState : CellState) {
         guard let validCell = cell as? CalendarCell else {return}
         if cellState.isSelected {
             validCell.isSelectedImg.isHidden = false
@@ -159,7 +159,7 @@ extension ListViewController : JTAppleCalendarViewDelegate,  JTAppleCalendarView
         }
     }
     
-    func handleCellisContents(cell : JTAppleCell? ,cellState : CellState) {
+    func handleCellisContents(cell : JTACDayCell? ,cellState : CellState) {
         guard let validCell = cell as? CalendarCell else {return}
         dateFormatter.dateFormat = "yyyyMMdd"
         let contentsDate = dateFormatter.string(from: cellState.date)
@@ -170,13 +170,13 @@ extension ListViewController : JTAppleCalendarViewDelegate,  JTAppleCalendarView
         }
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+    func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         handleSelectedCellColor(cell: cell, cellState: cellState)
         handleCellColor(cell: cell, cellState: cellState)
         handleCellisContents(cell: cell, cellState: cellState)
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+    func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarCell
         cell.dateLabel.text = cellState.text
         handleSelectedCellColor(cell: cell, cellState: cellState)
@@ -185,24 +185,24 @@ extension ListViewController : JTAppleCalendarViewDelegate,  JTAppleCalendarView
         return cell
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+    func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState) {
         handleSelectedCellColor(cell: cell, cellState: cellState)
         self.selectedDate = cellState.date
         //        handleCellColor(cell: cell, cellState: cellState)
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+    func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState) {
         handleSelectedCellColor(cell: cell, cellState: cellState)
         handleCellColor(cell: cell, cellState: cellState)
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+    func calendar(_ calendar: JTACMonthView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         self.updateDateLabel(visibleDate: visibleDates)
     }
     
     
     
-    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+    func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
         dateFormatter.dateFormat = "yyyy MM dd"
         dateFormatter.timeZone = Calendar.current.timeZone
         dateFormatter.locale = Calendar.current.locale

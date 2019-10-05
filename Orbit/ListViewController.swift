@@ -30,7 +30,7 @@ class ListViewController: UIViewController {
     var thisMonthLabel : UILabel!
     var weeks : [String] = ["일","월","화","수","목","금","토"]
     var weeksStackView : UIStackView!
-    var calendarView : JTAppleCalendarView!
+    var calendarView : JTACMonthView!
     let dateFormatter : DateFormatter = DateFormatter()
     var dates : [Date] = []
     var contentDate : [String] = []
