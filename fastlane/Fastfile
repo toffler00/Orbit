@@ -18,6 +18,7 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new release build to the App Store"
   lane :release do
+    cocoapods(use_bundle_exec : false)
     sync_code_signing
     disable_automatic_code_signing(path: "Orbit.xcworkspace")
     build_app(workspace: "Orbit.xcworkspace", scheme: "Orbit_Prod")
