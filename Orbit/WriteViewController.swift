@@ -51,7 +51,6 @@ class WriteViewController: UIViewController {
     fileprivate var cameraIconImgView : UIImageView!
     fileprivate var iconBgView : UIView!
     fileprivate var contents : UITextView!
-    //    fileprivate var models : [Model.Contents] = [Model.Contents]()
     var selectedImageData: Data?
     fileprivate var datePicker : UIDatePicker!
     fileprivate var weatherPicker : UIPickerView!
