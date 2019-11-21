@@ -1,10 +1,3 @@
-//
-//  OptionsViewController.swift
-//  Orbit
-//
-//  Created by SSY on 2018. 9. 4.
-//  Copyright © 2018년 orbit. All rights reserved.
-//
 
 import UIKit
 import RealmSwift
@@ -53,7 +46,6 @@ class OptionsViewController: UIViewController, UINavigationControllerDelegate, M
         navigationItem.hidesBackButton = true
         navigationItem.title = "설정"
         self.view.backgroundColor = UIColor(red: 1, green: 1, blue: 240/255, alpha: 1)
-        // 이곳에서만 크게 타이틀을 보이게 하고 싶은데...
         
         let realmManager = RealmManager.shared.realm
         datasourece = realmManager.objects(Content.self)
