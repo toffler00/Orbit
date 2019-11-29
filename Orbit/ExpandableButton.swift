@@ -58,7 +58,7 @@ extension ListViewController {
                                     self.exButton.isHidden = true
             }),
         ]
-        self.exButton = ExpandableButtonView(frame: CGRect(x: 0, y: 0, width: 48, height:  48), direction: .left, items: items)
+        self.exButton = ExpandableButtonView(frame: CGRect(x: 0, y: 0, width: 100, height:  48), direction: .left, items: items)
         self.exButton.translatesAutoresizingMaskIntoConstraints = false
         
         let const : [NSLayoutConstraint] = [NSLayoutConstraint(item: self.exButton, attribute: .width, relatedBy: .equal,
