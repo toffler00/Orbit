@@ -25,6 +25,7 @@
 		62254C762182F0E90084AE56 /* CutomKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62254C752182F0E90084AE56 /* CutomKeyboard.swift */; };
 		6231E6162273473A007D3E0C /* TutorialPageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6231E6152273473A007D3E0C /* TutorialPageView.storyboard */; };
 		6231E6632289900F007D3E0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6231E6622289900F007D3E0C /* GoogleService-Info.plist */; };
+		6236DB2B239134AB000CE371 /* Pods_Orbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB85391CFAE15A2F774AEF66 /* Pods_Orbit.framework */; };
 		6237172D2201A53B00549221 /* BackGroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6237172C2201A53B00549221 /* BackGroundViewController.swift */; };
 		6237172F220C4A6D00549221 /* DrawingDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6237172E220C4A6D00549221 /* DrawingDiaryViewController.swift */; };
 		62826A4F22706DF1002E7E21 /* DeleteAllDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62826A4E22706DF1002E7E21 /* DeleteAllDataDelegate.swift */; };
@@ -73,7 +74,6 @@
 		6AFAA89B213A716100D241E2 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFAA89A213A716100D241E2 /* PhotosViewController.swift */; };
 		6AFAA89D213A728D00D241E2 /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFAA89C213A728D00D241E2 /* PhotoCollectionView.swift */; };
 		6AFAA89F213A72CD00D241E2 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFAA89E213A72CD00D241E2 /* PhotoCollectionViewCell.swift */; };
-		A30363786577CE147CA4028E /* Pods_Orbit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB85391CFAE15A2F774AEF66 /* Pods_Orbit.framework */; };
 		CADA18B3F13C9E1896B6E0BE /* Pods_OrbitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33AFCA43DE115D59459EAB8B /* Pods_OrbitUITests.framework */; };
 		CE388C2A213E42550063DE35 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE388C29213E42550063DE35 /* OptionsViewController.swift */; };
 		CE84E7492137D3350097357F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE84E7482137D3350097357F /* ListViewController.swift */; };
@@ -190,7 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A30363786577CE147CA4028E /* Pods_Orbit.framework in Frameworks */,
+				6236DB2B239134AB000CE371 /* Pods_Orbit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,7 +662,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Orbit/Pods-Orbit-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		688426A9E6CA25B9176300AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
