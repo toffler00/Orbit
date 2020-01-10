@@ -38,7 +38,7 @@ extension ListViewController {
                                  attributedTitle: attributeString[1], highlightedAttributedTitle: nil,
                                  contentEdgeInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
                                  titleEdgeInsets: UIEdgeInsets(top: 36, left: -128, bottom: 0, right: 0),
-                                 imageEdgeInsets: insets, size: CGSize(width: 46, height: 46),
+                                 imageEdgeInsets: insets, size: CGSize(width: 48, height: 46),
                                  titleAlignment: .center,
                                  imageContentMode: .scaleAspectFit,
                                  action: { (_) in
@@ -50,7 +50,7 @@ extension ListViewController {
                                  attributedTitle: attributeString[2], highlightedAttributedTitle: nil,
                                  contentEdgeInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
                                  titleEdgeInsets: UIEdgeInsets(top: 36, left: -128, bottom: 0, right: 0),
-                                 imageEdgeInsets: insets, size: CGSize(width: 46, height: 46),
+                                 imageEdgeInsets: insets, size: CGSize(width: 48, height: 46),
                                  titleAlignment: .center,
                                  imageContentMode: .scaleAspectFit,
                                  action: { (_) in
@@ -80,8 +80,8 @@ extension ListViewController {
         self.exButton.closeOnAction = false
         self.exButton.animationDuration = 0.2
         self.exButton.separatorColor = .clear
-        self.exButton.isHapticFeedback = false
-        
+        self.exButton.isHapticFeedback = true
+        exButton.isSeparatorHidden = true
         
     }
 }
