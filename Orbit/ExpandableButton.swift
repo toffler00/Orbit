@@ -82,6 +82,5 @@ extension ListViewController {
         self.exButton.separatorColor = .clear
         self.exButton.isHapticFeedback = true
         exButton.isSeparatorHidden = true
-        
     }
 }
