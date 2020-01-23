@@ -93,7 +93,7 @@ class WriteViewController: UIViewController {
         settingData = realmManager.objects(Settings.self)
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 1, green: 1, blue: 240/255, alpha: 1)
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationItem.title = "일기"
         self.navigationItem.hidesBackButton = true
         self.view.backgroundColor = UIColor(red: 1, green: 1, blue: 240/255, alpha: 1)

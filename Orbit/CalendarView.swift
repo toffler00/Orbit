@@ -185,13 +185,12 @@ extension ListViewController : JTACMonthViewDelegate,  JTACMonthViewDataSource {
         return cell
     }
     
-    func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState) {
+    func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         handleSelectedCellColor(cell: cell, cellState: cellState)
         self.selectedDate = cellState.date
-        //        handleCellColor(cell: cell, cellState: cellState)
     }
     
-    func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState) {
+    func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         handleSelectedCellColor(cell: cell, cellState: cellState)
         handleCellColor(cell: cell, cellState: cellState)
     }
@@ -199,8 +198,6 @@ extension ListViewController : JTACMonthViewDelegate,  JTACMonthViewDataSource {
     func calendar(_ calendar: JTACMonthView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         self.updateDateLabel(visibleDate: visibleDates)
     }
-    
-    
     
     func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
         dateFormatter.dateFormat = "yyyy MM dd"
