@@ -23,25 +23,31 @@ class ListViewController: UIViewController {
     var datasource : Results<Content>!
     var settingData : Results<Settings>!
     let realmManager = RealmManager.shared.realm
-    
     let appdelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // MARK: UI Properties
     var listTableView: UITableView!
     private var writeButton: UIImageView!
     var thisMonthLabel : UILabel!
     var weeks : [String] = ["일","월","화","수","목","금","토"]
     var weeksStackView : UIStackView!
     var calendarView : JTACMonthView!
-    let dateFormatter : DateFormatter = DateFormatter()
-    var dates : [Date] = []
-    var contentDate : [String] = []
     var optionIcon : UIImageView!
     var weatherItem : Int!
-    
     var exButton : ExpandableButtonView = {
         var item : [ExpandableButtonItem] = []
         let btn = ExpandableButtonView(items: item)
         return btn
     }()
+    var expansionBtnView : UIStackView!
+    var memoBtn : UIImageView!
+    var drawBtn : UIImageView!
+    var diaryBtn : UIImageView!
+    
+    //  MARK: Coordinate Properties
+    let dateFormatter : DateFormatter = DateFormatter()
+    var dates : [Date] = []
+    var contentDate : [String] = []
     var selectedDate : Date!
     var locationManager: CLLocationManager!
     var coordinate : CLLocationCoordinate2D?  {
@@ -69,6 +75,48 @@ class ListViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        setUpOptionIcon(bool: true)
+        //        setWriteBtn(bool: true)
+        setExpandableButton()
+        setNavigationBackButton(onView: self, bool: false)
+        if listTableView == nil {
+            return
+        }else {
+            self.calendarView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setUpOptionIcon(bool: false)
+        //        setWriteBtn(bool: false)
+        exButton.isHidden = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 1, green: 1, blue: 240/255, alpha: 1)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .automatic
+        self.view.backgroundColor = UIColor(red: 1, green: 1, blue: 240/255, alpha: 1)
+        
+        setSettingsDefaultValue()
+        setNavieTitle()
+        setDatasource(in: getDate(dateFormat: "MMM yyyy"))
+        setupLocationManager()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if self.calendarView == nil {
+            setUpUI()
+            setUpCalendarView()
+            setCalendar()
+            setUpLayout()
+        }
+    }
+    
     // MARK: IBAction
     @objc func pushOptionViewController(_ sender: UIImageView) {
         let optionsVC = OptionsViewController()
@@ -76,7 +124,7 @@ class ListViewController: UIViewController {
         navigationController?.pushViewController(optionsVC, animated: true)
     }
     
-    // MARK: @objc Method
+    // MARK: @objc Method push ViewController : write, drawing, memo
     @objc func pushWriteViewController(){
         let writeViewController = WriteViewController(delegate: self)
         writeViewController.selectedDate = self.selectedDate
@@ -113,40 +161,10 @@ class ListViewController: UIViewController {
         present(backgroundViewController, animated: false, completion: nil)
     }
     
+    // MARK: reloadData
     func reloadData(){
         self.listTableView.reloadData()
         self.calendarView.reloadData()
-    }
-    
-    // MARK: Life Cycle
-    override func viewWillAppear(_ animated: Bool) {
-        setUpOptionIcon(bool: true)
-        //        setWriteBtn(bool: true)
-        setExpandableButton()
-        setNavigationBackButton(onView: self, bool: false)
-        if listTableView == nil {
-            return
-        }else {
-            self.calendarView.reloadData()
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        setUpOptionIcon(bool: false)
-        //        setWriteBtn(bool: false)
-        exButton.isHidden = true
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 1, green: 1, blue: 240/255, alpha: 1)
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .automatic
-        setSettingsDefaultValue()
-        setNavieTitle()
-        self.view.backgroundColor = UIColor(red: 1, green: 1, blue: 240/255, alpha: 1)
-        setDatasource(in: getDate(dateFormat: "MMM yyyy"))
-        setupLocationManager()
     }
     
     func setNavieTitle() {
@@ -174,7 +192,6 @@ class ListViewController: UIViewController {
         } else {
             self.navigationItem.title = "Dot Note"
         }
-        
     }
     
     func setSettingsDefaultValue() {
@@ -183,16 +200,6 @@ class ListViewController: UIViewController {
             let data = Settings(categoryFont: "NanumMyeongjoEco", titleFont: "NanumBarunGothic",
                                 contentsFont: "NanumBarunGothic", fontSize: 16, collectionFilter: 1)
             RealmManager.shared.creat(object: data)
-        }
-    }
-    
-    // MARK: viewWillLayoutSubviews:
-    override func viewWillLayoutSubviews() {
-        if self.calendarView == nil {
-            setUpUI()
-            setUpCalendarView()
-            setCalendar()
-            setUpLayout()
         }
     }
 }

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6B46C7BA804B5ABA4B7B47D329D602A"
+               BlueprintIdentifier = "809AE8946D3331630ECDE8CCFBCC8EFC"
                BuildableName = "Pods_Orbit.framework"
                BlueprintName = "Pods-Orbit"
                ReferencedContainer = "container:Pods.xcodeproj">
