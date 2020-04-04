@@ -44,7 +44,6 @@ extension ListViewController {
                                  action: { (_) in
                                     self.pushDrawingViewController()
                                     self.exButton.isHidden = true
-                                    
             }),
             ExpandableButtonItem(image: UIImage(named: "edit"), highlightedImage: nil,
                                  attributedTitle: attributeString[2], highlightedAttributedTitle: nil,
@@ -58,11 +57,10 @@ extension ListViewController {
                                     self.exButton.isHidden = true
             }),
         ]
-        let xPoint = self.navigationController?.navigationBar.frame.maxX
-        let yPoint = (self.navigationController?.navigationBar.frame.maxY)! - 48
-        print("ypoint = \(yPoint)")
-        self.exButton = ExpandableButtonView(frame: CGRect(x: xPoint! - 48, y: yPoint, width: 48, height:  48), direction: .left, items: items)
-        self.exButton.translatesAutoresizingMaskIntoConstraints = false
+//        let xPoint = self.navigationController?.navigationBar.frame.maxX
+//        let yPoint = (self.navigationController?.navigationBar.frame.maxY)! - 48
+//        self.exButton = ExpandableButtonView(frame: CGRect(x: xPoint! - 48, y: yPoint, width: 48, height:  48), direction: .left, items: items)
+       
 //        let const : [NSLayoutConstraint] = [NSLayoutConstraint(item: self.exButton, attribute: .width, relatedBy: .equal,
 //                                                               toItem: nil, attribute: .width,
 //                                                               multiplier: 1, constant: 48),
@@ -73,13 +71,21 @@ extension ListViewController {
 //                                                               toItem: optionIcon, attribute: .centerX,
 //                                                               multiplier: 1, constant: 0),
 //                                            NSLayoutConstraint(item: self.exButton, attribute: .bottom, relatedBy: .equal,
-//                                                               toItem: self.navigationController?.navigationBar, attribute: .bottom,
+//                                                               toItem: self.navigationController?.navigationBar,
+//                                                               attribute: .bottom,
 //                                                               multiplier: 1, constant: -6)]
-        self.navigationController?.navigationBar.addSubview(self.exButton)
+//        self.navigationController?.navigationBar.addSubview(self.exButton)
 //        self.navigationController?.navigationBar.addConstraints(const)
+        self.navigationController?.navigationBar.addSubview(exButton)
+        self.exButton.translatesAutoresizingMaskIntoConstraints = false
+        exButton.topAnchor.constraint(equalTo: optionIcon.bottomAnchor, constant: 8).isActive = true
+        exButton.centerXAnchor.constraint(equalTo: optionIcon.centerXAnchor, constant: 0).isActive = true
+        exButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        exButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        exButton.backgroundColor = .yellow
         //        self.exButton.closeImage = UIImage(named: "plus2")
         //        exButton.openImage = UIImage(named: "multiply")
-        self.exButton.closeOnAction = false
+        self.exButton.closeOnAction = true
         self.exButton.animationDuration = 0.2
         self.exButton.separatorColor = .clear
         self.exButton.isHapticFeedback = true

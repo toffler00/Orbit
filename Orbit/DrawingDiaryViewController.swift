@@ -171,7 +171,6 @@ class DrawingDiaryViewController : UIViewController {
             self.weatherState.backgroundColor = .clear
         }
     }
-    
 }
 
 //MARK: save button and method
@@ -186,8 +185,12 @@ extension DrawingDiaryViewController {
                                    attribute: .width, multiplier: 1, constant: 25),
                 NSLayoutConstraint(item: writeDoneIcon, attribute: .height, relatedBy: .equal, toItem: nil,
                                    attribute: .height, multiplier: 1, constant: 25),
-                NSLayoutConstraint(item: writeDoneIcon, attribute: .trailing, relatedBy: .equal, toItem: self.navigationController?.navigationBar, attribute: .trailing, multiplier: 1, constant: -12),
-                NSLayoutConstraint(item: writeDoneIcon, attribute: .bottom, relatedBy: .equal, toItem: self.navigationController?.navigationBar, attribute: .bottom, multiplier: 1, constant: -10)]
+                NSLayoutConstraint(item: writeDoneIcon, attribute: .trailing, relatedBy: .equal,
+                                   toItem: self.navigationController?.navigationBar,
+                                   attribute: .trailing, multiplier: 1, constant: -12),
+                NSLayoutConstraint(item: writeDoneIcon, attribute: .bottom, relatedBy: .equal,
+                                   toItem: self.navigationController?.navigationBar,
+                                   attribute: .bottom, multiplier: 1, constant: -10)]
             navigationController?.navigationBar.addSubview(writeDoneIcon)
             navigationController?.navigationBar.addConstraints(constWrtieDoneIcon)
             
@@ -263,6 +266,7 @@ extension DrawingDiaryViewController : UIPickerViewDelegate, UIPickerViewDataSou
             contents.textColor = UIColor(red: 208/255, green: 207/255, blue: 208/255, alpha: 1)
         }
     }
+    
     fileprivate func registerForTextViewNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(cleanTextView),
                                                name: UITextView.textDidBeginEditingNotification, object: nil)
@@ -278,7 +282,6 @@ extension DrawingDiaryViewController : UIPickerViewDelegate, UIPickerViewDataSou
     fileprivate func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillshow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     fileprivate func unregisterForKeyboardNotification() {
@@ -799,7 +802,6 @@ extension DrawingDiaryViewController {
         contents.textColor = UIColor(red: 208/255, green: 207/255, blue: 208/255, alpha: 1)
         
     }
-    
 }
 
 // Helper function inserted by Swift 4.2 migrator.
