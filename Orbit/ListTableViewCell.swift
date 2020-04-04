@@ -155,8 +155,6 @@ extension ListTableViewCell {
         titleLabel.adjustsFontSizeToFitWidth = false
         titleLabel.lineBreakMode = .byTruncatingTail
         titleLabel.font = UIFont(name: "NanumBarunGothic", size: 16)
-        
-        
     }
     
     func addBottomBorderLine(to view : UIView ,height : CGFloat) {

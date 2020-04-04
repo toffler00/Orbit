@@ -12,13 +12,13 @@ import ExpandableButton
 extension ListViewController {
     func setExpandableButton() {
         let insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        let attributeString : [NSAttributedString] = [NSAttributedString(string: "메모",
+        let attributeString : [NSAttributedString] = [NSAttributedString(string: "",
                                                                          attributes: [NSAttributedString.Key.foregroundColor : UIColor.black,
                                                                                       NSAttributedString.Key.font : UIFont.systemFont(ofSize: 10)]),
-                                                      NSAttributedString(string: "그림일기",
+                                                      NSAttributedString(string: "",
                                                                          attributes: [NSAttributedString.Key.foregroundColor : UIColor.black,
                                                                                       NSAttributedString.Key.font : UIFont.systemFont(ofSize: 10)]),
-                                                      NSAttributedString(string: "일기",
+                                                      NSAttributedString(string: "",
                                                                          attributes: [NSAttributedString.Key.foregroundColor : UIColor.black,
                                                                                       NSAttributedString.Key.font : UIFont.systemFont(ofSize: 10)])]
         
@@ -57,39 +57,30 @@ extension ListViewController {
                                     self.exButton.isHidden = true
             }),
         ]
-//        let xPoint = self.navigationController?.navigationBar.frame.maxX
-//        let yPoint = (self.navigationController?.navigationBar.frame.maxY)! - 48
-//        self.exButton = ExpandableButtonView(frame: CGRect(x: xPoint! - 48, y: yPoint, width: 48, height:  48), direction: .left, items: items)
-       
-//        let const : [NSLayoutConstraint] = [NSLayoutConstraint(item: self.exButton, attribute: .width, relatedBy: .equal,
-//                                                               toItem: nil, attribute: .width,
-//                                                               multiplier: 1, constant: 48),
-//                                            NSLayoutConstraint(item: self.exButton, attribute: .height, relatedBy: .equal,
-//                                                               toItem: nil, attribute: .height,
-//                                                               multiplier: 1, constant: 48),
-//                                            NSLayoutConstraint(item: self.exButton, attribute: .centerX, relatedBy: .equal,
-//                                                               toItem: optionIcon, attribute: .centerX,
-//                                                               multiplier: 1, constant: 0),
-//                                            NSLayoutConstraint(item: self.exButton, attribute: .bottom, relatedBy: .equal,
-//                                                               toItem: self.navigationController?.navigationBar,
-//                                                               attribute: .bottom,
-//                                                               multiplier: 1, constant: -6)]
-//        self.navigationController?.navigationBar.addSubview(self.exButton)
-//        self.navigationController?.navigationBar.addConstraints(const)
-        self.navigationController?.navigationBar.addSubview(exButton)
-        self.exButton.translatesAutoresizingMaskIntoConstraints = false
-        exButton.topAnchor.constraint(equalTo: optionIcon.bottomAnchor, constant: 8).isActive = true
-        exButton.centerXAnchor.constraint(equalTo: optionIcon.centerXAnchor, constant: 0).isActive = true
-        exButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        exButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        exButton.backgroundColor = .yellow
-        //        self.exButton.closeImage = UIImage(named: "plus2")
-        //        exButton.openImage = UIImage(named: "multiply")
+
+        let xpoint = UIScreen.main.bounds.width - 50
+        self.exButton = ExpandableButtonView(frame: CGRect(x: xpoint, y: 46, width: 48, height:  48), direction: .left, items: items)
+
+        let const : [NSLayoutConstraint] = [NSLayoutConstraint(item: self.exButton, attribute: .width, relatedBy: .equal,
+                                                               toItem: nil, attribute: .width,
+                                                               multiplier: 1, constant: 48),
+                                            NSLayoutConstraint(item: self.exButton, attribute: .height, relatedBy: .equal,
+                                                               toItem: nil, attribute: .height,
+                                                               multiplier: 1, constant: 48),
+                                            NSLayoutConstraint(item: self.exButton, attribute: .centerX, relatedBy: .equal,
+                                                               toItem: optionIcon, attribute: .centerX,
+                                                               multiplier: 1, constant: 0),
+                                            NSLayoutConstraint(item: self.exButton, attribute: .bottom, relatedBy: .equal,
+                                                               toItem: self.navigationController?.navigationBar,
+                                                               attribute: .bottom,
+                                                               multiplier: 1, constant: -6)]
+        self.navigationController?.navigationBar.addSubview(self.exButton)
+        self.navigationController?.navigationBar.addConstraints(const)
         self.exButton.closeOnAction = true
         self.exButton.animationDuration = 0.2
         self.exButton.separatorColor = .clear
         self.exButton.isHapticFeedback = true
-        exButton.isSeparatorHidden = true
+        exButton.isSeparatorHidden = false
     }
     
 }
